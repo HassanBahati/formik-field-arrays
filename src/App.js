@@ -86,7 +86,7 @@ function App() {
                               setFieldValue(flagName, true);
                             }}
                           >
-                            {values.answers[index].correct
+                            {values.answers[index].correct_answer
                               ? "Correct Answer"
                               : "Mark As Correct"}
                           </button>
