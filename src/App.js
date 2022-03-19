@@ -6,6 +6,9 @@ import { Formik, Form, Field, FieldArray } from "formik";
 function App() {
   const initialValues = {
     question_text: "",
+    profession: "",
+    level: "",
+    category_name: "",
     answers: [
       {
         answer_text: "",
@@ -46,11 +49,10 @@ function App() {
       >
         {({ isValid, isSubmitting, values, setFieldValue }) => (
           <Form>
-            
             <Field
               label="Question Title"
               placeholder="type question here"
-              name='question_text'
+              name="question_text"
               component={InputText}
             />
 
