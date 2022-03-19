@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import * as Yup from "yup";
 import InputText from "./components/TextInput";
 import { Formik, Form, Field, FieldArray } from "formik";
+import { specialChars } from "@testing-library/user-event";
 
 function App() {
   const initialValues = {
@@ -36,8 +37,7 @@ function App() {
   };
 
   return (
-    <div className="step">
-      <h2>Basic Info</h2>
+    <div className="">
       <Formik
         initialValues={initialValues}
         validationSchema={basicFormSchema}
@@ -47,7 +47,6 @@ function App() {
         {({ isValid, isSubmitting, values, setFieldValue }) => (
           <Form>
             <Field
-              
               placeholder="Type question here"
               name="question_text"
               component={InputText}
@@ -63,7 +62,6 @@ function App() {
                       return (
                         <li key={index}>
                           <Field
-                           
                             name={answerFieldName}
                             component={InputText}
                             placeholder="Type answer here"
@@ -86,9 +84,13 @@ function App() {
                               setFieldValue(flagName, true);
                             }}
                           >
-                            {values.answers[index].correct_answer
-                              ? "Correct Answer"
-                              : "Mark As Correct"}
+                            {values.answers[index].correct_answer ? (
+                              <span className="text-teal-500">
+                                Correct Answer
+                              </span>
+                            ) : (
+                              <span className="">Mark As Correct</span>
+                            )}
                           </button>
                         </li>
                       );
