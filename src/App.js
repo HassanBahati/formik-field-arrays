@@ -28,7 +28,12 @@ function App() {
 
   const basicFormSchema = Yup.object().shape({
     question_text: Yup.string().trim().required("This field is required."),
-    answer_text: Yup.string().trim().required("This field is required."),
+
+    answers: Yup.array(
+      Yup.object({
+        answer_text: Yup.string().trim().required("This field is required."),
+      })
+    ).required("Required"),
   });
 
   const handleFormSubmit = (values, bag) => {
@@ -78,9 +83,7 @@ function App() {
                           <button
                             type="button"
                             className={
-                              values.answers[index].correct_answer
-                                ? ""
-                                : ""
+                              values.answers[index].correct_answer ? "" : ""
                             }
                             onClick={() => {
                               values.answers.map((tem3, index3) => {
