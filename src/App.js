@@ -46,16 +46,15 @@ function App() {
       >
         {({ isValid, isSubmitting, values, setFieldValue }) => (
           <Form>
-            
             <Field
               label="Question Title"
               placeholder="type question here"
-              name='question_text'
+              name="question_text"
               component={InputText}
             />
 
             <FieldArray name={`answers`}>
-              {(arrayHelpers2) => (
+              {({ insert, remove, push }) => (
                 <div className="">
                   <ul>
                     {values.answers.map((item, index) => {
@@ -73,12 +72,12 @@ function App() {
                           <button
                             type="button"
                             className={
-                              values.answers[index].correct ? "active" : ""
+                              values.answers[index].correct_answer ? "active" : ""
                             }
                             onClick={() => {
                               values.answers.map((tem3, index3) => {
                                 setFieldValue(
-                                  `answers[${index3}].correct`,
+                                  `answers[${index3}].correct_answer`,
                                   false
                                 );
                               });
