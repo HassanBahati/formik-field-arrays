@@ -6,6 +6,7 @@ const InputText = (props) => {
     showErrorOnTouch = true,
     label,
     field,
+    placeholder,
     form: { touched, errors },
     ...restProps
   } = props;
@@ -21,13 +22,14 @@ const InputText = (props) => {
         type="text"
         {...field}
         {...restProps}
-        className={
+        placeholder={placeholder}
+        className={`${
           showErrorOnTouch
             ? touch && errorMessage
               ? "invalid"
               : ""
             : errorMessage && "invalid"
-        }
+        } `}
       />
 
       {showErrorOnTouch
