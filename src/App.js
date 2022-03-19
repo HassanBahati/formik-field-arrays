@@ -39,6 +39,16 @@ function App() {
   const handleFormSubmit = (values, bag) => {
     console.log(values);
     bag.setSubmitting(false);
+    if (
+      values.answers[0].correct_answer === true ||
+      values.answers[1].correct_answer === true ||
+      values.answers[2].correct_answer === true ||
+      values.answers[3].correct_answer === true
+    ) {
+      alert("Thanks");
+    } else {
+      alert("Select atleat one correct answer");
+    }
   };
 
   return (
