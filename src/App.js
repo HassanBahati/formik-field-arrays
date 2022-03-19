@@ -9,19 +9,19 @@ function App() {
     answers: [
       {
         answer: "",
-        correct: false,
+        correct_answer: false,
       },
       {
         answer: "",
-        correct: false,
+        correct_answer: false,
       },
       {
         answer: "",
-        correct: false,
+        correct_answer: false,
       },
       {
         answer: "",
-        correct: false,
+        correct_answer: false,
       },
     ],
   };
@@ -59,7 +59,7 @@ function App() {
                   <ul>
                     {values.answers.map((item, index) => {
                       const answerFieldName = `answers[${index}].answer`;
-                      const flagName = `answers[${index}].correct`;
+                      const flagName = `answers[${index}].correct_answer`;
                       return (
                         <li key={index}>
                           <Field
