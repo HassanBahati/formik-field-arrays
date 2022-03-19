@@ -9,19 +9,19 @@ function App() {
     answers: [
       {
         answer: "",
-        correct: false,
+        correct_answer: false,
       },
       {
         answer: "",
-        correct: false,
+        correct_answer: false,
       },
       {
         answer: "",
-        correct: false,
+        correct_answer: false,
       },
       {
         answer: "",
-        correct: false,
+        correct_answer: false,
       },
     ],
   };
@@ -60,7 +60,7 @@ function App() {
                   <ul>
                     {values.answers.map((item, index) => {
                       const answerFieldName = `answers[${index}].answer`;
-                      const flagName = `answers[${index}].correct`;
+                      const flagName = `answers[${index}].correct_answer`;
                       return (
                         <li key={index}>
                           <Field
@@ -78,7 +78,7 @@ function App() {
                             onClick={() => {
                               values.answers.map((tem3, index3) => {
                                 setFieldValue(
-                                  `answers[${index3}].correct`,
+                                  `answers[${index3}].correct_answer`,
                                   false
                                 );
                               });
