@@ -51,7 +51,7 @@ function App() {
           <Form>
             <Field
               label="Question Title"
-              placeholder="type question here"
+              placeholder="Type question here"
               name="question_text"
               component={InputText}
             />
@@ -69,7 +69,7 @@ function App() {
                             label="Answer"
                             name={answerFieldName}
                             component={InputText}
-                            placeholder="type answer here"
+                            placeholder="Type answer here"
                           />
 
                           <button
