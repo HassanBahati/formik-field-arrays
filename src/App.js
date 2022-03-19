@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import * as Yup from "yup";
 import InputText from "./components/TextInput";
-import { Formik, Form, Field, FieldArray } from "formik";
-import { specialChars } from "@testing-library/user-event";
+import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 
 function App() {
   const initialValues = {
@@ -29,6 +28,7 @@ function App() {
 
   const basicFormSchema = Yup.object().shape({
     question_text: Yup.string().trim().required("This field is required."),
+    answer_text: Yup.string().trim().required("This field is required."),
   });
 
   const handleFormSubmit = (values, bag) => {
@@ -51,7 +51,11 @@ function App() {
               name="question_text"
               component={InputText}
             />
-
+            <ErrorMessage
+              name={`question_text`}
+              component="div"
+              className="field-error"
+            />
             <FieldArray name={`answers`}>
               {({ insert, remove, push }) => (
                 <div className="">
@@ -66,12 +70,16 @@ function App() {
                             component={InputText}
                             placeholder="Type answer here"
                           />
-
+                          <ErrorMessage
+                            name={answerFieldName}
+                            component="div"
+                            className="field-error"
+                          />
                           <button
                             type="button"
                             className={
                               values.answers[index].correct_answer
-                                ? "active"
+                                ? ""
                                 : ""
                             }
                             onClick={() => {
@@ -84,13 +92,9 @@ function App() {
                               setFieldValue(flagName, true);
                             }}
                           >
-                            {values.answers[index].correct_answer ? (
-                              <span className="text-teal-500">
-                                Correct Answer
-                              </span>
-                            ) : (
-                              <span className="">Mark As Correct</span>
-                            )}
+                            {values.answers[index].correct_answer
+                              ? "Correct Answer"
+                              : "Mark As Correct"}
                           </button>
                         </li>
                       );

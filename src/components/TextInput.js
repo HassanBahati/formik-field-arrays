@@ -3,7 +3,6 @@ import React from "react";
 const InputText = (props) => {
   const {
     showErrorOnTouch = true,
-
     field,
     placeholder,
     ...restProps
