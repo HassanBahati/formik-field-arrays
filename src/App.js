@@ -55,7 +55,12 @@ function App() {
               name="question_text"
               component={InputText}
             />
-
+            <ErrorMessage
+              name={`question_text`}
+              component="div"
+              className="field-error"
+            />
+            <hr className="bg-gray-200 h-px my-4" />
             <FieldArray name={`answers`}>
               {(arrayHelpers2) => (
                 <div className="">
@@ -87,7 +92,7 @@ function App() {
                               setFieldValue(flagName, true);
                             }}
                           >
-                            {values.answers[index].correct
+                            {values.answers[index].correct_answer
                               ? "Correct Answer"
                               : "Mark As Correct"}
                           </button>
