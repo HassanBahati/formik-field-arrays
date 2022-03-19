@@ -1,30 +1,27 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import * as Yup from "yup";
 import InputText from "./components/TextInput";
-import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
+import { Formik, Form, Field, FieldArray } from "formik";
 
 function App() {
   const initialValues = {
     question_text: "",
-    profession: "",
-    level: "",
-    category_name: "",
     answers: [
       {
-        answer_text: "",
-        correct_answer: false,
+        answer: "",
+        correct: false,
       },
       {
-        answer_text: "",
-        correct_answer: false,
+        answer: "",
+        correct: false,
       },
       {
-        answer_text: "",
-        correct_answer: false,
+        answer: "",
+        correct: false,
       },
       {
-        answer_text: "",
-        correct_answer: false,
+        answer: "",
+        correct: false,
       },
     ],
   };
@@ -51,30 +48,25 @@ function App() {
           <Form>
             <Field
               label="Question Title"
-              placeholder="Type question here"
+              placeholder="type question here"
               name="question_text"
               component={InputText}
             />
-            <ErrorMessage
-              name={`question_text`}
-              component="div"
-              className="field-error"
-            />
-            <hr className="bg-gray-200 h-px my-4" />
+
             <FieldArray name={`answers`}>
-              {({ isValid, isSubmitting, values, setFieldValue }) => (
+              {({ insert, remove, push }) => (
                 <div className="">
                   <ul>
                     {values.answers.map((item, index) => {
-                      const answerFieldName = `answers[${index}].answer_text`;
-                      const flagName = `answers[${index}].correct_answer`;
+                      const answerFieldName = `answers[${index}].answer`;
+                      const flagName = `answers[${index}].correct`;
                       return (
                         <li key={index}>
                           <Field
                             label="Answer"
                             name={answerFieldName}
                             component={InputText}
-                            placeholder="Type answer here"
+                            placeholder="type answer here"
                           />
 
                           <button
@@ -85,14 +77,14 @@ function App() {
                             onClick={() => {
                               values.answers.map((tem3, index3) => {
                                 setFieldValue(
-                                  `answers[${index3}].correct_answer`,
+                                  `answers[${index3}].correct`,
                                   false
                                 );
                               });
                               setFieldValue(flagName, true);
                             }}
                           >
-                            {values.answers[index].correct_answer
+                            {values.answers[index].correct
                               ? "Correct Answer"
                               : "Mark As Correct"}
                           </button>
