@@ -33,7 +33,7 @@ function App() {
       Yup.object({
         answer_text: Yup.string().trim().required("This field is required."),
       })
-    ).required("Required"),
+    ).required("This field is required."),
   });
 
   const handleFormSubmit = (values, bag) => {
