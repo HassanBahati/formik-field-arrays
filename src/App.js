@@ -47,7 +47,7 @@ function App() {
         {({ isValid, isSubmitting, values, setFieldValue }) => (
           <Form>
             <Field
-              label="Question Title"
+              
               placeholder="Type question here"
               name="question_text"
               component={InputText}
@@ -63,7 +63,7 @@ function App() {
                       return (
                         <li key={index}>
                           <Field
-                            label="Answer"
+                           
                             name={answerFieldName}
                             component={InputText}
                             placeholder="Type answer here"
