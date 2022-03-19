@@ -62,7 +62,7 @@ function App() {
             />
             <hr className="bg-gray-200 h-px my-4" />
             <FieldArray name={`answers`}>
-              {(arrayHelpers2) => (
+              {({ isValid, isSubmitting, values, setFieldValue }) => (
                 <div className="">
                   <ul>
                     {values.answers.map((item, index) => {
