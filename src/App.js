@@ -72,12 +72,12 @@ function App() {
                           <button
                             type="button"
                             className={
-                              values.answers[index].correct ? "active" : ""
+                              values.answers[index].correct_answer ? "active" : ""
                             }
                             onClick={() => {
                               values.answers.map((tem3, index3) => {
                                 setFieldValue(
-                                  `answers[${index3}].correct`,
+                                  `answers[${index3}].correct_answer`,
                                   false
                                 );
                               });
